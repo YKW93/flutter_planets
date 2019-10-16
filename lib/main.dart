@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_planets/ui/screens/HomePage.dart';
+import 'package:flutter_planets/ui/home/HomePage.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
