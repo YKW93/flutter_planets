@@ -5,6 +5,24 @@ import 'package:flutter_planets/model/Planet.dart';
 class HomePageBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return PlanetRow(planets[0]);
+    return Expanded(
+      child: Container(
+        color: Color(0xFF736AB7),
+        child: CustomScrollView(
+          slivers: <Widget>[
+            SliverPadding(
+              padding: EdgeInsets.symmetric(vertical: 24.0),
+              sliver: SliverFixedExtentList(
+                delegate: SliverChildBuilderDelegate(
+                  (context, index) => PlanetRow(planets[index]),
+                  childCount: planets.length,
+                ),
+                itemExtent: 152.0,
+              ),
+            )
+          ],
+        ),
+      ),
+    );
   }
 }

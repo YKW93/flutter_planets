@@ -119,7 +119,7 @@ class PlanetRow extends StatelessWidget {
       ),
       alignment: FractionalOffset.centerLeft,
       child: Image(
-        image: AssetImage("assets/img/mars.png"),
+        image: AssetImage(planet.image),
         height: 92.0,
         width: 92.0,
       ),
