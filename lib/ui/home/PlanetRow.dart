@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_planets/model/Planet.dart';
 import 'package:flutter_planets/common/utils/StyleUtils.dart';
+import 'package:flutter_planets/ui/detail/DetailPage.dart';
 
 class PlanetRow extends StatelessWidget {
   final Planet planet;
@@ -9,16 +10,20 @@ class PlanetRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.symmetric(
-        vertical: 16.0,
-        horizontal: 24.0,
-      ),
-      child: Stack(
-        children: <Widget>[
-          _buildPlanetCard(),
-          _buildPlanetThumbnail(),
-        ],
+    return InkWell(
+      onTap: () => Navigator.of(context).push(
+          PageRouteBuilder(pageBuilder: (_, __, ___) => DetailPage(planet))),
+      child: Container(
+        margin: const EdgeInsets.symmetric(
+          vertical: 16.0,
+          horizontal: 24.0,
+        ),
+        child: Stack(
+          children: <Widget>[
+            _buildPlanetCard(),
+            _buildPlanetThumbnail(),
+          ],
+        ),
       ),
     );
   }
@@ -117,11 +122,14 @@ class PlanetRow extends StatelessWidget {
       margin: EdgeInsets.symmetric(
         vertical: 16.0,
       ),
-      alignment: FractionalOffset.centerLeft,
-      child: Image(
-        image: AssetImage(planet.image),
-        height: 92.0,
-        width: 92.0,
+      alignment: Alignment.centerLeft,
+      child: Hero(
+        tag: 'planet-hero-${planet.id}',
+        child: Image(
+          image: AssetImage(planet.image),
+          height: 92.0,
+          width: 92.0,
+        ),
       ),
     );
   }
